@@ -15,6 +15,7 @@ export const CartItem = ({ item }) => {
           <button
             className="btn btn-danger"
             onClick={() => deleteProductById(item.id)}
+            
           >
             Quitar del carrito
           </button>
