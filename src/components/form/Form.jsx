@@ -1,4 +1,4 @@
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 import { useState } from "react";
 import {
   addDoc,
@@ -14,13 +14,18 @@ export const Form = ({ cart, getTotalPrice, setOrderId, clearCart }) => {
   const [checkEmail, setCheckEmail] = useState("");
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (checkEmail !== userData.email) {
+    if (
+      checkEmail !== userData.email ||
+      userData.name === "" ||
+      userData.phone === "" ||
+      userData.email === ""
+    ) {
       Swal.fire({
-        icon: 'error',
-        title: 'Error',
-        text: 'Revise haber ingresado correctamente su email',
-        footer: 'Ambos correos deben coincidir'
-      })
+        icon: "error",
+        title: "Error",
+        text: "Revise los datos ingresados",
+        footer: "Todos los campos deben estar completos",
+      });
     } else {
       const order = {
         buyer: userData,
@@ -46,7 +51,7 @@ export const Form = ({ cart, getTotalPrice, setOrderId, clearCart }) => {
   };
 
   return (
-    <div>
+    <div  className="border-dark">
       <form action="" onSubmit={handleSubmit}>
         <input
           className="m-1"

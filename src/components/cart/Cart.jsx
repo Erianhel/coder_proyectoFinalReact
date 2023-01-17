@@ -1,3 +1,4 @@
+import Swal from "sweetalert2";
 import { useContext, useState, useEffect } from "react";
 import { Form } from "../form/Form";
 import { CartContext } from "../../context/CartContext";
@@ -30,9 +31,9 @@ export const Cart = () => {
 
   if (orderId) {
     return (
-      <div className="ms-5 mt-3">
+      <div className="m-4 justify-content-center">
         <Orders order={order} />
-        <Link className="btn btn-primary mt-1" to="/">
+        <Link className="btn btn-primary mt-1 ms-5" to="/">
           Volver a comprar
         </Link>
       </div>
@@ -45,10 +46,10 @@ export const Cart = () => {
         return <CartItem key={item.id} item={item} />;
       })}
       {cart.length > 0 ? (
-        <div className="card" style={{ width: "18rem", height: "18rem" }}>
+        <div className="card text-center m-4 justify-content-center shadow p-2 mb-4 border-dark" style={{ width: "18rem", height: "22rem" }}>
           <div className="card-body">
-            <h5 className="card-title">Total de productos</h5>
-            <p className="card-text">Precio total: ${getTotalPrice()}</p>
+            <h5 className="card-title text-center fs-2">Total de productos</h5>
+            <p className="card-text text-center fs-5">Precio total: ${getTotalPrice()}</p>
             {comprar ? (
               <Form
                 cart={cart}
@@ -64,7 +65,7 @@ export const Cart = () => {
                 >
                   Comprar
                 </button>
-                <button className="btn btn-primary m-1" onClick={clearCart}>
+                <button className="btn btn-danger m-1" onClick={clearCart}>
                   Limpiar carrito
                 </button>
               </>
@@ -74,6 +75,7 @@ export const Cart = () => {
       ) : (
         <h2>El carrito está vacío</h2>
       )}
+      
     </div>
   );
 };

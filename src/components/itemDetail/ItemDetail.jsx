@@ -12,7 +12,7 @@ export const ItemDetail = ({ producto }) => {
   const cantidad = getCantidadById(producto.id);
 
   return (
-    <div className="card m-5" style={{ width: "18rem" }}>
+    <div className="card m-4 justify-content-center shadow p-3 mb-5 text-center border-dark" style={{ width: "18rem" }}>
       <img src={producto.img} className="card-img-top" alt={producto.name} />
       <div className="card-body">
         <h5 className="card-title">{producto.name}</h5>

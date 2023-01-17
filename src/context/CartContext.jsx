@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { createContext } from "react";
+import Swal from "sweetalert2";
 
 export const CartContext = createContext();
 
@@ -7,19 +8,18 @@ export const CartContextProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const addToCart = (elemento) => {
     if (isInCart(elemento)) {
+      setCart(newArray);
       let newArray = cart.map((item) => {
         if (item.id === elemento.id) {
           let newItem = {
             ...item,
             counter: elemento.counter,
           };
-
           return newItem;
         } else {
           return item;
         }
       });
-      setCart(newArray);
     } else {
       setCart([...cart, elemento]);
     }
